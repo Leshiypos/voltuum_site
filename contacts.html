@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./fonts/stylesheet.css">
+    <link rel="stylesheet" href="./libs/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.4/dist/lenis.css">
+    <link rel="icon" href="./assets/icons/favicon.svg">
+    <title>Contacts</title>
+    <script>
+        document.documentElement.style.setProperty('--fixed-vh', `${window.innerHeight}px`);
+    </script>
+</head>
+<body>
+
+    <div id="preloader">
+        <img src="./assets/icons/preloader-logo.svg" alt="">
+        <span class="loader"></span>
+    </div> 
+    
+    <!-- Бургер меню -->
+    <nav class="menu">
+        <img class="burger-logo" src="./assets/icons/preloader-logo.svg" alt="logo">
+        <ul class="burger__list">
+            <div class="burger-first-column">
+                <li class="burger__list-link"><a href="./index.html">HOME</a></li>
+                <li class="burger__list-link"><a href="./index.html#advantages">ADVANTAGES</a></li>
+                <li class="burger__list-link"><a href="./index.html#solutions">SOLUTIONS</a></li>
+                <li class="burger__list-link"><a href="./index.html#about">ABOUT US</a></li>
+                <li class="burger__list-link"><a href="./contacts.html">CONTACT US</a></li>
+            </div>
+        </ul>
+        <div class="contacts__wrap contacts__wrap-popup fade-in">
+            <a class="contacts__block contacts__block-popup" href="">
+                <div class="contacts__block-icon contacts__block-icon-popup"><img src="./assets/icons/mail.svg" alt="mail"></div>
+            </a>
+            <a class="contacts__block contacts__block-popup" href="">
+                <div class="contacts__block-icon contacts__block-icon-popup"><img src="./assets/icons/wa-white.svg" alt="wa"></div>
+            </a>
+            <a class="contacts__block contacts__block-popup" href="">
+                <div class="contacts__block-icon contacts__block-icon-popup"><img src="./assets/icons/tel-white.svg" alt="tel"></div>
+            </a>
+            <a class="contacts__block contacts__block-popup" href="">
+                <div class="contacts__block-icon contacts__block-icon-popup"><img src="./assets/icons/inst.svg" alt="inst"></div>
+            </a>
+                
+        </div>
+    </nav>
+
+    <div class="close-btn">
+        <span class="close-line"></span>
+        <span class="close-line"></span>
+    </div>
+
+    <header class="header">
+        <img src="./assets/icons/generation-logo.svg" alt="" class="logo">
+        <ul class="nav-menu nav-menu-contacts">
+            <li><a href="./index.html">HOME</a></li>
+            <li><a href="./index.html#advantages">ADVANTAGES</a></li>
+            <li><a href="./index.html#solutions">SOLUTIONS</a></li>
+            <li><a href="./index.html#about">ABOUT US</a></li>
+        </ul>
+
+        <div class="burger-menu mobile">
+            <div class="burger-btn">
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+            </div>          
+            
+        </div>
+        <div class="header-button" onclick="showPopup()">Get started</div>
+    </header>
+
+    <main>
+
+        <div class="slide slide-contacts">
+            <video src="./assets/contacts-page.mp4" class="slider-video slider-video-contacts" id="slider-video-contacts"  muted autoplay loop playsinline preload="auto"></video>
+            <div class="video-back"></div>
+            <div class="slide-content slide-content-contacts">
+                <h2 class="slide-header slide-header-contacts">Contact us</h2>
+                
+                <form class="contacts__form" action="" method="get" enctype="multipart/form-data">
+                    <div class="label-wrap label-wrap-contacts">
+
+                            <label class="company-name">
+                                <input class="contacts-form-input" type="email" name="company" placeholder="Company name">
+                            </label>
+                            <label class="form-name">
+                                <input class="contacts-form-input" type="text" name="name" placeholder="Your name">
+                            </label>                                     
+                            <label class="form-email">
+                                <input class="contacts-form-input" type="email" name="mail" placeholder="Your Email">
+                            </label> 
+                            <button class="contacts-button contacts-button-contacts" type="submit">Contact us</button> 
+                            
+                    </div>                      
+                </form>
+                
+                    
+                    <div class="contacts__icons">
+                        <a class="contacts__block" href="">
+                            <div class="contacts__block-icon"><img src="./assets/icons/mail.svg" alt="mail"></div>
+                            <p class="contacts__block-link">geniuspeople@hrmny.com</p>
+                        </a>
+                        <a class="contacts__block" href="">
+                            <div class="contacts__block-icon"><img src="./assets/icons/wa-white.svg" alt="wa"></div>
+                            <p class="contacts__block-link">+971 (281)-12-14-111</p>
+                        </a>
+                        <a class="contacts__block" href="">
+                            <div class="contacts__block-icon"><img src="./assets/icons/tel-white.svg" alt="tel"></div>
+                            <p class="contacts__block-link">@genius.hrrmny</p>
+                        </a>
+                        <a class="contacts__block" href="">
+                            <div class="contacts__block-icon"><img src="./assets/icons/inst.svg" alt="inst"></div>
+                            <p class="contacts__block-link">@genius.people</p>
+                        </a>
+                            
+                
+                </div>
+            </div>
+
+
+            
+        </div>        
+
+    </main>
+
+    
+
+    <div id="popup-overlay">
+        <div id="popup">
+            <div class="popup-wrap">
+                <div class="popoup__close" onclick="closePopup()"></div>
+                <div class="popup__head">
+                    <h2 class="popup__head-header">Leave<span class="br-mobile"></span> a request</h2>
+                    <p class="popup__head-text">Not sure what solution fits best? We’ll walk you through options, explain features, and show how our platform can adapt to your business model — quickly and reliably.</p>
+                </div>
+                
+                <form class="contacts__form" action="" method="get" enctype="multipart/form-data">
+                    <div class="label-wrap label-wrap-popup">
+
+                            <label class="company-name fade-in">
+                                <input class="contacts-form-input" type="email" name="company" placeholder="Company name">
+                            </label>
+                            <label class="form-name fade-in">
+                                <input class="contacts-form-input" type="text" name="name" placeholder="Your name">
+                            </label>                                     
+                            <label class="form-email fade-in">
+                                <input class="contacts-form-input" type="email" name="mail" placeholder="Your Email">
+                            </label> 
+                            <button class="contacts-button contacts-button-popup fade-in" type="submit">Contact us</button> 
+                          
+                    </div>                      
+                </form>
+
+                <div class="contacts-inner contacts-inner-popup">
+                    <h3 class="contacts__header contacts__header-popup fade-in">Contact us</h3>
+                    <div class="contacts__wrap contacts__wrap-popup fade-in">
+                        <a class="contacts__block contacts__block-popup" href="">
+                            <div class="contacts__block-icon contacts__block-icon-popup"><img src="./assets/icons/mail.svg" alt="mail"></div>
+                            <p class="contacts__block-link contacts__block-link-popup">geniuspeople@hrmny.com</p>
+                        </a>
+                        <a class="contacts__block contacts__block-popup" href="">
+                            <div class="contacts__block-icon contacts__block-icon-popup"><img src="./assets/icons/wa-white.svg" alt="wa"></div>
+                            <p class="contacts__block-link contacts__block-link-popup">+971 (281)-12-14-111</p>
+                        </a>
+                        <a class="contacts__block contacts__block-popup" href="">
+                            <div class="contacts__block-icon contacts__block-icon-popup"><img src="./assets/icons/tel-white.svg" alt="tel"></div>
+                            <p class="contacts__block-link contacts__block-link-popup">@genius.hrrmny</p>
+                        </a>
+                        <a class="contacts__block contacts__block-popup" href="">
+                            <div class="contacts__block-icon contacts__block-icon-popup"><img src="./assets/icons/inst.svg" alt="inst"></div>
+                            <p class="contacts__block-link contacts__block-link-popup">@genius.people</p>
+                        </a>
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<script src="./libs/swiper/swiper-bundle.min.js" defer></script>   
+<script src="./libs/gsap/gsap.min.js" defer></script> 
+<script src="./libs/gsap/ScrollTrigger.min.js" defer></script>
+<script src="https://unpkg.com/lenis@1.3.4/dist/lenis.min.js" defer></script>
+<script src="./script.js" defer></script>
+
+</body>
+</html>

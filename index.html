@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./fonts/stylesheet.css">
+    <link rel="stylesheet" href="./libs/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.4/dist/lenis.css">
+    <link rel="icon" href="./assets/icons/favicon.svg">
+    <title>Web3</title>
+    <script>
+        document.documentElement.style.setProperty('--fixed-vh', `${window.innerHeight}px`);
+    </script>
+</head>
+<body>
+
+    <div id="preloader">
+        <img src="./assets/icons/preloader-logo.svg" alt="">
+        <span class="loader"></span>
+    </div> 
+
+    <!-- Бургер меню -->
+    <nav class="menu">
+        <img class="burger-logo" src="./assets/icons/preloader-logo.svg" alt="logo">
+        <ul class="burger__list">
+            <div class="burger-first-column">
+                <li class="burger__list-link"><a href="./index.html">HOME</a></li>
+                <li class="burger__list-link"><a href="#advantages">ADVANTAGES</a></li>
+                <li class="burger__list-link"><a href="#solutions">SOLUTIONS</a></li>
+                <li class="burger__list-link"><a href="#about">ABOUT US</a></li>
+                <li class="burger__list-link"><a href="./contacts.html">CONTACT US</a></li>
+            </div>
+        </ul>
+        <div class="contacts__wrap contacts__wrap-popup fade-in">
+            <a class="contacts__block contacts__block-popup" href="">
+                <div class="contacts__block-icon contacts__block-icon-popup"><img src="./assets/icons/mail.svg" alt="mail"></div>
+            </a>
+            <a class="contacts__block contacts__block-popup" href="">
+                <div class="contacts__block-icon contacts__block-icon-popup"><img src="./assets/icons/wa-white.svg" alt="wa"></div>
+            </a>
+            <a class="contacts__block contacts__block-popup" href="">
+                <div class="contacts__block-icon contacts__block-icon-popup"><img src="./assets/icons/tel-white.svg" alt="tel"></div>
+            </a>
+            <a class="contacts__block contacts__block-popup" href="">
+                <div class="contacts__block-icon contacts__block-icon-popup"><img src="./assets/icons/inst.svg" alt="inst"></div>
+            </a>
+                
+        </div>
+    </nav>
+    
+    <div class="close-btn">
+        <span class="close-line"></span>
+        <span class="close-line"></span>
+    </div>
+
+    <header class="header">
+        <img src="./assets/icons/generation-logo.svg" alt="" class="logo">
+        <ul class="nav-menu">
+            <li><a href="#advantages">ADVANTAGES</a></li>
+            <li><a href="#solutions">SOLUTIONS</a></li>
+            <!-- <li><a class="footer-link" href="#clients">OUR CLIENTS</a></li> -->
+            <li><a href="#about">ABOUT US</a></li>
+            <li><a href="./contacts.html">CONTACT US</a></li>
+        </ul>
+        <div class="header-button" onclick="showPopup()">Get started</div>
+        <div class="burger-menu mobile">
+            <div class="burger-btn">
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+            </div>
+            
+            
+        </div>
+    </header>
+
+    <main>
+
+        <div class="container">
+            <div class="swiper-container slider-inner">
+                <div class="swiper-wrapper">
+
+                    <div class="swiper-slide slide">
+                        <video src="./assets/head1.mp4" class="slider-video" id="slider-video-1"  muted autoplay loop playsinline preload="auto"></video>
+                        <div class="video-back"></div>
+                        <div class="slide-content">
+                            <h2 class="slide-header">Built to move money for the world’s leading Web3 projects</h2>
+                            
+                            <div class="slide__describe">
+                                <div class="generation__content-button" onclick="showPopup()">Discover our platform</div>
+                                <p class="slide__describe-text">Use crypto like cash — fund your Visa® card with digital assets and spend anywhere Visa is accepted. Fast, legal, and user-friendly.</p>
+                            </div>
+    
+                            <a class="slide-button" href="#solution">Scroll to discover</a>
+                        </div>
+                    </div>
+    
+                    <!-- <div class="swiper-slide slide">
+                        <video src="./assets/head2.mp4" class="slider-video" id="slider-video-2" muted autoplay loop playsinline preload="metadata"></video>
+                        <div class="video-back"></div>
+                        <div class="slide-content">
+                            <h2 class="slide-header">pay in crypto directly from<br> your visa card</h2>
+                            
+                            <div class="slide__describe">
+                                <div class="generation__content-button" onclick="showPopup()">Discover our platform</div>
+                                <p class="slide__describe-text">Use crypto like cash — fund your Visa® card with digital assets and spend anywhere Visa is accepted. Fast, legal, and user-friendly.</p>
+                            </div>
+    
+                            <a class="slide-button" href="#solution">Scroll to discover</a>
+                        </div>
+                    </div>
+    
+                    <div class="swiper-slide slide">
+                        <video src="./assets/head3.mp4" class="slider-video" id="slider-video-3" muted autoplay loop playsinline preload="metadata"></video>
+                        <div class="video-back"></div>
+                        <div class="slide-content">
+                            <h2 class="slide-header">Monetize your SaaS anywhere — <br>with payments that just work</h2>
+                            
+                            <div class="slide__describe">
+                                <div class="generation__content-button" onclick="showPopup()">Discover our platform</div>
+                                <p class="slide__describe-text">Use crypto like cash — fund your Visa® card with digital assets and spend anywhere Visa is accepted. Fast, legal, and user-friendly.</p>
+                            </div>
+    
+                            <a class="slide-button" href="#solution">Scroll to discover</a>
+                        </div>
+                    </div> -->
+
+                    
+
+
+                </div>
+                <!-- <div class="swiper-pagination"></div>  -->
+            </div>
+        </div>
+        
+        <div class="container pc">
+            <div class="solution-inner" id="solution">
+                <div class="solution-video"><video class="solution-video-item fade-in" src="./assets/benefits.mp4" muted autoplay loop playsinline preload="metadata"></video></div>
+                <div class="solution__content">
+                    <h2 class="solution__header fade-in-blur">Solution we provide</h2>
+                    <p class="solution__text fade-in-blur">We help fintechs, crypto projects, and high-risk businesses go live — with ready-to-use payment solutions, no licenses or bank agreements needed</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="cards-inner" id="advantages">
+                <div class="cards__block">
+                    <div class="cards__block-icons">
+                        <div class="cards__icons-wrap">
+                            <img class="card__icons-item pc" src="./assets/dol.svg" alt="" loading="lazy">
+                            <img class="card__icons-item pc" src="./assets/euro.svg" alt="" loading="lazy">
+
+                            <img class="card__icons-item mobile" src="./assets/dol-mobile.svg" alt="" loading="lazy">
+                            <img class="card__icons-item mobile" src="./assets/euro-mobile.svg" alt="" loading="lazy">
+                        </div>
+                        <img src="./assets/icons/arrow-cards.svg" class="cards-arrow pc" alt="" loading="lazy">
+                        <img src="./assets/icons/arrow-cards-mobile.svg" class="cards-arrow mobile" alt="" loading="lazy">
+
+                        <div class="cards__icons-wrap">
+                            <img src="./assets/item1.svg" class="center__icon-item" alt="" loading="lazy">
+                            <img src="./assets/item2.svg" class="center__icon-item" alt="" loading="lazy">
+                            <img src="./assets/item3.svg" class="center__icon-item" alt="" loading="lazy">
+                        </div>
+                               </div>
+                    <p class="cards__block-header fade-in-blur">Payment processing</p>
+                    <p class="cards__block-text fade-in-blur">Reliable acquiring for high-risk and low-risk verticals — from SaaS and e-commerce to crypto and trading. Fast setup, stable routing, and chargeback-tolerant infrastructure.</p>
+                </div>
+    
+                <div class="cards__block">
+                    <img src="./assets/cards.png" class="cards__block-image cards fade-in" alt="" loading="lazy">
+                    <p class="cards__block-header fade-in-blur">Crypto Cards</p>
+                    <p class="cards__block-text fade-in-blur">Virtual and physical crypto-to-fiat cards with global reach. Top up with crypto, spend in USD, EUR, and more — frictionless experience for your users, full compliance for your business.</p>
+                </div>
+    
+                <div class="cards__block">
+                    <img src="./assets/ring.webp" class="cards__block-image pc fade-in" alt="" loading="lazy">
+                    <img src="./assets/ring-mobile.webp" class="cards__block-image mobile fade-in" alt="" loading="lazy">
+                    <p class="cards__block-header fade-in-blur">White label soft</p>
+                    <p class="cards__block-text fade-in-blur">Custom-branded fintech software to launch neobanks, wallets, or payment services — without building from scratch. Scalable, secure, and tailored to your business model.</p>
+                </div>
+    
+                <div class="cards__block">
+                    <img src="./assets/coin.webp" class="cards__block-image fade-in" alt="" loading="lazy">
+                    <p class="cards__block-header fade-in-blur">Launch of White-label platform</p>
+                    <p class="cards__block-text fade-in-blur">A turnkey solution with legal framework and PSP integration. Start accepting payments without a license or direct contracts with banks — fully compliant, ready-to-use, under your brand.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="converter-inner" id="solutions">
+                <div class="converter__head-block">
+                    <h2 class="converter__head-header fade-in-blur">Solution we provide</h2>
+                    <p class="converter__head-text fade-in-blur">We help fintechs, crypto projects, and high-risk businesses go live <span class="pc"> — with ready-to-use payment solutions, no licenses or bank agreements needed</span></p>
+                    <img src="./assets/icons/logo.svg" class="logo-icon" alt="">
+                </div>
+
+                <div class="converter__content">
+                    <div class="converter__ramp">
+                        <div class="converter__ramp-head">
+                            <p class="converter__ramp-header fade-in-blur">On Ramp</p>
+                            <p class="converter__ramp-text fade-in-blur">On-rump to web3. In 15 seconds. Onboard and retain users with ease</p>
+                        </div>
+                        <div class="converter__wrap fade-in">
+                            <div class="input-wrap-usdt"><input type="number" class="converter-usdt" value="300" readonly></div>
+                            <div class="input-wrap-usd"><input type="number" class="converter-usd" value="300" readonly></div>
+                            <div class="converter-button" onclick="showPopup()">Exchange now</div>
+                        </div>
+
+                        <div class="converter__icons">
+                            <div class="converter__icons-wrap fade-in">
+                                <img src="./assets/item1.svg" class="converter__icon-item" alt="" loading="lazy">
+                                <img src="./assets/item2.svg" class="converter__icon-item" alt="" loading="lazy">
+                                <img src="./assets/item3.svg" class="converter__icon-item" alt="" loading="lazy">
+                            </div>
+                            <p class="converter__icons-number fade-in">30</p>
+                            <p class="converter__icons-text fade-in">accepted<br> cryptocurrencies</p>
+                        </div>
+
+                    </div>
+
+                    <div class="converter__spend">
+                        <div class="converter__spend-head">
+                            <p class="converter__spend-header fade-in-blur">Spend</p>
+                            <p class="converter__spend-text fade-in-blur">On-rump to web3. In 15 seconds. Onboard and retain users with ease</p>                            
+                        </div>
+                        <img src="./assets/spend-cards.webp" class="converter-cards pc fade-in" alt="" loading="lazy">
+                        <img src="./assets/spend-cards-mobile.webp" class="converter-cards mobile fade-in" alt="" loading="lazy">
+                        <div class="converter__spend-content">
+                            <div class="spend__content-block fade-in">
+                                <p class="spend-text">40+</p>
+                                <p class="spend-describe">Chains</p>
+                            </div>
+                            <div class="spend__content-block fade-in">
+                                <p class="spend-text">Instant</p>
+                                <p class="spend-describe">Card insurance</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="fiat-inner">
+                <img class="fiat-back fade-in" src="./assets/fiat-back.webp" alt="" loading="lazy">
+                <div class="fiat-back-dark"></div>
+                <div class="fiat__content">
+                    <h2 class="fiat__content-header fade-in-blur">Convert fiat to crypto and back in one click</h2>
+                    <div class="fiat__converter">
+                        <div class="fiat__converter-wrap">
+                            <div class="input-wrap-usdt fiat-input-wrap-usdt"><input type="number" class="converter-usdt fiat-converter-usdt" value="300" readonly></div>
+                            <img class="fiat__converter-icon pc" src="./assets/icons/convert.svg" alt="" loading="lazy">
+                            <div class="input-wrap-usd fiat-input-wrap-usd"><input type="number" class="converter-usd fiat-converter-usd" value="300" readonly></div>
+                            <div class="converter-button fiat-converter-button pc" onclick="showPopup()">Exchange now</div>
+                        </div>
+
+                        <div class="converter__icons pc">
+                            <div class="converter__icons-wrap">
+                                <img src="./assets/item1.svg" class="converter__icon-item" alt="" loading="lazy">
+                                <img src="./assets/item2.svg" class="converter__icon-item" alt="" loading="lazy">
+                                <img src="./assets/item3.svg" class="converter__icon-item" alt="" loading="lazy">
+                            </div>
+                            <p class="converter__icons-number">30</p>
+                            <p class="converter__icons-text">accepted<br> cryptocurrencies</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="partners-inner" id="clients">
+                <h2 class="partners__header fade-in-blur">Our clients and partners</h2>
+                <div class="slider-buttons partners-slider-buttons fade-in mobile">
+                    <div class="button-slider-prev partners-button-prev"><img src="./assets/icons/slider-left.svg" alt=""></div>
+                    <div class="button-slider-next partners-button-next"><img src="./assets/icons/slider-right.svg" alt=""></div>
+                </div>
+                <p class="partners-text fade-in-blur">We offer multiple avenues to monetize our IP and technologies, ensuring sustainable revenue and scalability</p>
+                <div class="partners__wrap pc">
+
+                    <div class="partners__block">
+                        <div class="partners__block-number fade-in">/01</div>
+                        <p class="partners__block-name fade-in-blur">Fintech startups</p>
+                        <p class="partners__block-text fade-in-blur">Launch without the hassle — get a turnkey platform with legal, technical, and payment infrastructure. No license or bank agreements required.</p>
+                    </div>
+                    <div class="partners__block">
+                        <div class="partners__block-number fade-in">/02</div>
+                        <p class="partners__block-name fade-in-blur">Forex and trading platforms</p>
+                        <p class="partners__block-text fade-in-blur">Process payments for high-risk verticals without fear of blocks or refusals. Connect to reliable PSPs and stay compliant.</p>
+                    </div>
+                    <div class="partners__block">
+                        <div class="partners__block-number fade-in">/03</div>
+                        <p class="partners__block-name fade-in-blur">Crypto-to-fiat gateways</p>
+                        <p class="partners__block-text fade-in-blur">Bridge crypto and fiat with ease — use ready KYC, card issuing, and payment tools to stay legal and seamless.</p>
+                    </div>
+                    <div class="partners__block">
+                        <div class="partners__block-number fade-in">/04</div>
+                        <p class="partners__block-name fade-in-blur">High-risk e-commerce and subscriptions platforms</p>
+                        <p class="partners__block-text fade-in-blur">Ensure stable recurring billing with chargeback-tolerant processors and high approval rates — even in risky models.</p>
+                    </div>
+                    <div class="partners__block">
+                        <div class="partners__block-number fade-in">/05</div>
+                        <p class="partners__block-name fade-in-blur">Marketplaces, platforms, neobanks</p>
+                        <p class="partners__block-text fade-in-blur">Speed up time-to-market with white-label banking tools — infrastructure, PSPs, and UI all ready to go.</p>
+                    </div>
+                    <div class="partners__block">
+                        <div class="partners__block-number fade-in">/06</div>
+                        <p class="partners__block-name fade-in-blur">Infobusiness / EdTech / SaaS</p>
+                        <p class="partners__block-text fade-in-blur">Accept payments where Stripe or PayPal won’t work. Alternative gateways for Latin America, Africa, and Asia.</p>
+                    </div>
+
+                </div>
+
+                <div class="swiper fade-in" id="partners-slider">      
+
+                    <div class="swiper-wrapper partners__swiper-wrapper">                            
+                    
+                        <div class="swiper-slide partners__swiper-slide">
+                            <div class="partners__block">
+                                <div class="partners__block-number fade-in">/01</div>
+                                <p class="partners__block-name fade-in-blur">Fintech startups</p>
+                                <p class="partners__block-text fade-in-blur">Launch without the hassle — get a turnkey platform with legal, technical, and payment infrastructure. No license or bank agreements required.</p>
+                            </div>
+                        </div>   
+                           
+                        <div class="swiper-slide partners__swiper-slide">
+                            <div class="partners__block">
+                                <div class="partners__block-number fade-in">/02</div>
+                                <p class="partners__block-name fade-in-blur">Forex and trading platforms</p>
+                                <p class="partners__block-text fade-in-blur">Process payments for high-risk verticals without fear of blocks or refusals. Connect to reliable PSPs and stay compliant.</p>
+                            </div>
+                        </div>  
+
+                        <div class="swiper-slide partners__swiper-slide">
+                            <div class="partners__block">
+                                <div class="partners__block-number fade-in">/03</div>
+                                <p class="partners__block-name fade-in-blur">Crypto-to-fiat gateways</p>
+                                <p class="partners__block-text fade-in-blur">Bridge crypto and fiat with ease — use ready KYC, card issuing, and payment tools to stay legal and seamless.</p>
+                            </div>
+                        </div>      
+                        <div class="swiper-slide partners__swiper-slide">
+                            <div class="partners__block">
+                                <div class="partners__block-number fade-in">/04</div>
+                                <p class="partners__block-name fade-in-blur">High-risk e-commerce and subscriptions platforms</p>
+                                <p class="partners__block-text fade-in-blur">Ensure stable recurring billing with chargeback-tolerant processors and high approval rates — even in risky models.</p>
+                            </div>
+                        </div>      
+                        <div class="swiper-slide partners__swiper-slide">
+                            <div class="partners__block">
+                                <div class="partners__block-number fade-in">/05</div>
+                                <p class="partners__block-name fade-in-blur">Marketplaces, platforms, neobanks</p>
+                                <p class="partners__block-text fade-in-blur">Speed up time-to-market with white-label banking tools — infrastructure, PSPs, and UI all ready to go.</p>
+                            </div>
+                        </div>      
+                        <div class="swiper-slide partners__swiper-slide">
+                            <div class="partners__block">
+                                <div class="partners__block-number fade-in">/06</div>
+                                <p class="partners__block-name fade-in-blur">Infobusiness / EdTech / SaaS</p>
+                                <p class="partners__block-text fade-in-blur">Accept payments where Stripe or PayPal won’t work. Alternative gateways for Latin America, Africa, and Asia.</p>
+                            </div>
+                        </div>      
+                        
+                        
+       
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="services-inner" id="about">
+                <h2 class="services-header fade-in-blur">Everything in one place <span class="services-header-gray fade-in-blur">—from instant transfers to cryptocurrency payments</span></h2>
+                <div class="services__text-logo">
+                    <p class="services-header-text fade-in-blur">One platform to run your entire payment stack — from crypto on/off-ramps and fiat processing to card issuing, compliance, and PSP integrations. Reduce complexity, save time, and go to market faster with everything ready under your brand.</p>
+                    <img src="./assets/icons/logo.svg" class="logo-icon" alt="">
+                </div>
+                <div class="services-wrap">
+                    <!-- <div class="video-back-top pc"></div> -->
+                    <video src="./assets/services.mp4" class="services-video pc" muted autoplay loop playsinline preload="metadata"></video>
+                    <!-- <div class="video-back-down pc"></div> -->
+                    <div class="services__content">
+                        <div class="first-row">
+                            <div class="services__block fade-in-blur">
+                                <div class="services__block-plus">+</div>
+                                <p class="services__block-text">Payment Gaytway</p>
+                            </div>
+                        </div>
+
+                        <div class="second-row">
+                            <div class="services__block fade-in-blur">
+                                <div class="services__block-plus">+</div>
+                                <p class="services__block-text">Card Issuing</p>
+                            </div>
+                            <div class="services__block fade-in-blur">
+                                <div class="services__block-plus">+</div>
+                                <p class="services__block-text">Business Wallet</p>
+                            </div>
+                        </div>
+                        <!-- <div class="video-back-top mobile"></div> -->
+                        <video src="./assets/services-mobile.mp4" class="services-video mobile" muted autoplay loop playsinline preload="metadata"></video>
+                        <!-- <div class="video-back-down mobile"></div> -->
+
+                        <div class="third-row">
+                            <div class="services__block fade-in-blur">
+                                <div class="services__block-plus">+</div>
+                                <p class="services__block-text">KYC / AML Module</p>
+                            </div>
+                            <img src="./assets/icons/advantages-logo.svg" alt="" class="services-logo fade-in" loading="lazy">
+                            <div class="services__block fade-in-blur">
+                                <div class="services__block-plus">+</div>
+                                <p class="services__block-text">SaaS</p>
+                            </div>
+                        </div>
+
+                        <div class="second-row">
+                            <div class="services__block fade-in-blur">
+                                <div class="services__block-plus">+</div>
+                                <p class="services__block-text">Point of Sale</p>
+                            </div>
+                            <div class="services__block fade-in-blur">
+                                <div class="services__block-plus">+</div>
+                                <p class="services__block-text">OTC Desk</p>
+                            </div>
+                        </div>
+
+                        <div class="first-row">
+                            <div class="services__block fade-in-blur">
+                                <div class="services__block-plus">+</div>
+                                <p class="services__block-text">Hot Wallet</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="generation-inner">
+                <video src="./assets/generation.mp4" class="generation-video pc" muted autoplay loop playsinline preload="metadata"></video>
+                <video src="./assets/generation-mobile.mp4" class="generation-video mobile" muted autoplay loop playsinline preload="metadata"></video>
+                <div class="generation-wrap">
+                    <img src="./assets/icons/generation-logo.svg" alt="" class="generation-logo fade-in">
+                    <div class="generation__content">
+                        <h2 class="generation__content-header fade-in-blur">New generation payment gateway in the world</h2>
+                        <p class="generation__content-text fade-in-blur">A future-ready solution for crypto, fintech, and high-risk industries <span class="pc">— with fast onboarding, global reach, and full regulatory alignment</span></p>
+                        <div class="generation__content-button fade-in" onclick="showPopup()">Discover our platform</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="container">
+            <div class="contacts-inner">
+                <div class="contacts-wrap">
+                    <video src="./assets/contacts.mp4" class="contact-video" muted autoplay loop playsinline preload="metadata"></video>
+                    <div class="contacts__content">
+                        <h2 class="contacts__content-header fade-in-blur">if you have any questions</h2>
+                        <button class="contacts-button fade-in mobile" onclick="showPopup()">Contact us</button> 
+
+                        <p class="contacts__content-text fade-in-blur">Not sure what solution fits best? We’ll walk you through options, explain features, and show how our platform can adapt to your business model — quickly and reliably.</p>
+                        
+                        <div class="contacts__social-block">
+                            <div class="contacts__social-item"><img src="./assets/icons/wa-contacts.svg" alt=""></div>
+                            <div class="contacts__social-item"><img src="./assets/icons/tel-contacts.svg" alt=""></div>
+                            <div class="contacts__social-item"><img src="./assets/icons/x.svg" alt=""></div>
+                            <div class="contacts__social-item"><img src="./assets/icons/in.svg" alt=""></div>
+                            <button class="contacts-button fade-in pc" onclick="showPopup()">Contact us</button> 
+
+                        </div>
+
+                    </div>
+                </div>
+                
+            </div>
+        </div> -->
+        
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer__first-row fade-in">
+
+                    <div class="footer__block">
+                        <p class="footer__header">Cryptopowered by</p>
+                        <img src="./assets/icons/generation-logo.svg" class="footer__logo" alt="">
+                    </div>
+
+                    <div class="footer__block">
+                        <p class="footer__header">Products</p>
+                        <div class="footer__block-links">
+                            <a class="footer-link" href="">Spend</a>
+                            <a class="footer-link" href="">On ramp</a>
+                        </div>
+                    </div>
+
+                    <div class="footer__block">
+                        <p class="footer__header">About us</p>
+                        <div class="footer__block-links">
+                            <a class="footer-link" href="#advantages">Advantages</a>
+                            <a class="footer-link" href="#solutions">Solutions</a>
+                            <a class="footer-link" href="#clients">Our clients</a>
+                            <a class="footer-link" href="#about">About Us</a>
+                            <a class="footer-link" href="./contacts.html">Contact Us</a>
+                        </div>
+                    </div>
+
+                    <div class="footer__block">
+                        <p class="footer__header">Follow us</p>
+                        <div class="footer__block-icons">
+                            <a class="footer-icon" href="#"><img src="./assets/icons/wa-contacts.svg" alt=""></a>
+                            <a class="footer-icon" href="#"><img src="./assets/icons/tel-contacts.svg" alt=""></a>
+                            <a class="footer-icon" href="#"><img src="./assets/icons/x.svg" alt=""></a>
+                            <a class="footer-icon" href="#"><img src="./assets/icons/in.svg" alt=""></a>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+    
+                <div class="footer__second-row fade-in">
+                    <div class="footer__adress">
+                        <p class="footer__adress-name">Voluum LLC</p>
+                        <p class="footer__adress-text">Al. Bolestawa Krzywoustego
+                            40-870 Katowice</p>
+                    </div>
+                    
+                    <div class="footer-pay">
+                        <img src="./assets/icons/visa.svg" alt="" class="footer-pay-item">
+                        <img src="./assets/icons/mastercard.svg" alt="" class="footer-pay-item">
+                        <img src="./assets/icons/swift.svg" alt="" class="footer-pay-item">
+                        <img src="./assets/icons/sepa.svg" alt="" class="footer-pay-item">
+                    </div>
+
+                    <div class="footer__policy">
+                        <a href="" class="footer__privacy-text">Privacy</a>
+                        <a href="" class="footer__privacy-text">Policy</a>
+                        <a href="" class="footer__privacy-text">Terms & Conditions</a>
+                    </div>
+
+                </div>
+                
+    
+            </div>
+        </div>
+    </footer>
+
+    <div id="popup-overlay">
+        <div id="popup">
+            <div class="popup-wrap">
+                <div class="popoup__close" onclick="closePopup()"></div>
+                <div class="popup__head">
+                    <h2 class="popup__head-header">Leave<span class="br-mobile"></span> a request</h2>
+                    <p class="popup__head-text">Not sure what solution fits best? We’ll walk you through options, explain features, and show how our platform can adapt to your business model — quickly and reliably.</p>
+                </div>
+                
+                <form class="contacts__form" action="" method="get" enctype="multipart/form-data">
+                    <div class="label-wrap label-wrap-popup">
+
+                            <label class="company-name fade-in">
+                                <input class="contacts-form-input" type="email" name="company" placeholder="Company name">
+                            </label>
+                            <label class="form-name fade-in">
+                                <input class="contacts-form-input" type="text" name="name" placeholder="Your name">
+                            </label>                                     
+                            <label class="form-email fade-in">
+                                <input class="contacts-form-input" type="email" name="mail" placeholder="Your Email">
+                            </label> 
+                            <button class="contacts-button contacts-button-popup fade-in" type="submit">Contact us</button> 
+                          
+                    </div>                      
+                </form>
+
+                <div class="contacts-inner contacts-inner-popup">
+                    <h3 class="contacts__header contacts__header-popup fade-in">Contact us</h3>
+                    <div class="contacts__wrap contacts__wrap-popup fade-in">
+                        <a class="contacts__block contacts__block-popup" href="">
+                            <div class="contacts__block-icon contacts__block-icon-popup"><img src="./assets/icons/mail.svg" alt="mail"></div>
+                            <p class="contacts__block-link contacts__block-link-popup">geniuspeople@hrmny.com</p>
+                        </a>
+                        <a class="contacts__block contacts__block-popup" href="">
+                            <div class="contacts__block-icon contacts__block-icon-popup"><img src="./assets/icons/wa-white.svg" alt="wa"></div>
+                            <p class="contacts__block-link contacts__block-link-popup">+971 (281)-12-14-111</p>
+                        </a>
+                        <a class="contacts__block contacts__block-popup" href="">
+                            <div class="contacts__block-icon contacts__block-icon-popup"><img src="./assets/icons/tel-white.svg" alt="tel"></div>
+                            <p class="contacts__block-link contacts__block-link-popup">@genius.hrrmny</p>
+                        </a>
+                        <a class="contacts__block contacts__block-popup" href="">
+                            <div class="contacts__block-icon contacts__block-icon-popup"><img src="./assets/icons/inst.svg" alt="inst"></div>
+                            <p class="contacts__block-link contacts__block-link-popup">@genius.people</p>
+                        </a>
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<script src="./libs/swiper/swiper-bundle.min.js" defer></script> 
+<script src="https://unpkg.com/lenis@1.3.4/dist/lenis.min.js" defer></script>
+<script src="./libs/gsap/gsap.min.js" defer></script> 
+<script src="./libs/gsap/ScrollTrigger.min.js" defer></script>
+<script src="./script.js" defer></script>
+
+</body>
+</html>
