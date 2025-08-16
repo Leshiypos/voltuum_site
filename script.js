@@ -374,41 +374,43 @@ if (window.innerWidth < 1000) {
   const scaleMax = gsap.utils.mapRange(1, cards.length - 1, 0.8, 1);
   const time = 3;
 
-  gsap.set(cards, {
-    y: 0,
-    transformStyle: "preserve-3d",
-    transformPerspective: 800,
-    transformOrigin: "center top"
-  });
+  const initCards = () => {
+    gsap.set(cards, {
+      y: 0,
+      zIndex: (i) => cards.length - i,
+      transformStyle: 'preserve-3d',
+      transformPerspective: 800,
+      transformOrigin: 'center top',
+      backfaceVisibility: 'hidden'
+    });
+    gsap.set(cards.slice(1), {
+      y: (i) => 20 * (i + 1)
+    });
+  };
 
-  gsap.set(cards.slice(1), {
-    y: (i) => 20 * (i + 1)
-  });
+  initCards();
 
   const tl = gsap.timeline({
     scrollTrigger: {
-      trigger: ".cards-inner",
-      start: "center center",
-      end: "+=300%",
+      trigger: '.cards-inner',
+      start: 'center center',
+      end: '+=300%',
       scrub: 0.8,
       pin: true,
       markers: true,
       pinSpacing: true,
       anticipatePin: 1,
-      onRefresh: self => {
-        if (self.progress === 1) {
-          gsap.set(cards, { clearProps: "all" });
-        }
-      },
-      onLeave: () => gsap.set(cards, { clearProps: "all" })
+      onEnter: initCards,
+      onEnterBack: initCards,
+      onLeave: () => gsap.set(cards, { clearProps: 'all' }),
+      onLeaveBack: () => gsap.set(cards, { clearProps: 'all' })
     }
   });
 
   tl.from(cards[0], {
     y: 60,
     duration: time * 0.2,
-    ease: "power2.out",
-    immediateRender: false
+    ease: 'power2.out'
   }, 0);
 
   tl.from(cards.slice(1), {
@@ -416,7 +418,7 @@ if (window.innerWidth < 1000) {
     duration: time,
     stagger: {
       each: time,
-      from: "start"
+      from: 'start'
     }
   }, 0);
 
@@ -425,20 +427,23 @@ if (window.innerWidth < 1000) {
     scale: (i) => scaleMax(i + 1),
     stagger: {
       each: time,
-      from: "start"
+      from: 'start'
     }
+  }, time);
+
+  tl.to(cards[cards.length - 1], {
+    y: '+=20',
+    duration: time * 0.2,
+    ease: 'power2.out'
   }, time);
 
   tl.to(cards, {
     rotationX: 0,
     scale: 1,
-    y: 0,
     duration: 1,
-    ease: "power2.out",
-  }, "+=0.5");
+    ease: 'power2.out'
+  }, '+=0.5');
 }
-
-
 //Fade-in
 
 gsap.utils.toArray(".fade-in-blur").forEach((element) => {

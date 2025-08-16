@@ -370,6 +370,8 @@ body {
     position: relative;
     justify-content: center;
     overflow: hidden;
+    backface-visibility: hidden;
+    will-change: transform;
 }
 
 .cards__block-icons {
