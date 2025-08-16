@@ -399,14 +399,16 @@ if (window.innerWidth < 1000) {
         if (self.progress === 1) {
           gsap.set(cards, { clearProps: "all" });
         }
-      }
+      },
+      onLeave: () => gsap.set(cards, { clearProps: "all" })
     }
   });
 
   tl.from(cards[0], {
     y: 60,
     duration: time * 0.2,
-    ease: "power2.out"
+    ease: "power2.out",
+    immediateRender: false
   }, 0);
 
   tl.from(cards.slice(1), {
