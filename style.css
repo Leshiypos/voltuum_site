@@ -4298,7 +4298,7 @@ body.menu-open {
         overflow: hidden;
     }
 
-    .progress-fill {
+.progress-fill {
         position: absolute;
         top: 0;
         left: 0;
@@ -4308,6 +4308,16 @@ body.menu-open {
         border-radius: 12px;
         transition: width 0.1s linear;
     }
+}
+
+/* ----- stacked cards animation ----- */
+.cards__block.fixed-card {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    will-change: transform;
+    transition: transform 0.3s ease;
 }
 
 

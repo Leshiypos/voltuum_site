@@ -493,3 +493,60 @@ menuLinks.forEach((link) => {
     body.classList.remove("menu-open");
   });
 });
+
+// cards stacking animation
+document.addEventListener("DOMContentLoaded", () => {
+  const section = document.querySelector(".cards-inner");
+  if (!section) return;
+
+  const cards = Array.from(section.querySelectorAll(".cards__block"));
+  if (!cards.length) return;
+
+  const placeholders = [];
+
+  cards.forEach((card) => {
+    const placeholder = document.createElement("div");
+    placeholder.style.height = `${card.offsetHeight}px`;
+    placeholder.style.width = `${card.offsetWidth}px`;
+    section.insertBefore(placeholder, card);
+    placeholders.push(placeholder);
+
+    card.classList.add("fixed-card");
+    card.style.visibility = "hidden";
+  });
+
+  const update = () => {
+    const center = window.innerHeight / 2;
+    const totalStacked = placeholders.filter(
+      (ph) => ph.getBoundingClientRect().top + ph.offsetHeight / 2 <= center
+    ).length;
+
+    const lastPlaceholder = placeholders[placeholders.length - 1];
+    if (
+      lastPlaceholder.getBoundingClientRect().top <=
+      -lastPlaceholder.offsetHeight
+    ) {
+      cards.forEach((card) => {
+        card.style.visibility = "hidden";
+        card.style.transform = "translate(-50%, -50%)";
+      });
+      return;
+    }
+
+    cards.forEach((card, i) => {
+      if (i < totalStacked) {
+        const depth = totalStacked - i - 1;
+        card.style.visibility = "visible";
+        card.style.transform = `translate(-50%, -50%) translateY(${depth * 25}px) scale(${1 - depth * 0.05})`;
+        card.style.zIndex = `${100 - depth}`;
+      } else {
+        card.style.visibility = "hidden";
+        card.style.transform = "translate(-50%, -50%)";
+        card.style.zIndex = "";
+      }
+    });
+  };
+
+  window.addEventListener("scroll", update);
+  update();
+});
