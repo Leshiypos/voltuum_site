@@ -370,18 +370,18 @@ if (window.innerWidth < 1000) {
 //cards
 
 if (window.innerWidth < 1000) {
-  const scaleMax = gsap.utils.mapRange(1, document.querySelectorAll(".cards__block").length - 1, 0.8, 1);
-  const time = 3; 
+  const cards = gsap.utils.toArray('.cards__block');
+  const scaleMax = gsap.utils.mapRange(1, cards.length - 1, 0.8, 1);
+  const time = 3;
 
-
-  gsap.set('.cards__block', {
+  gsap.set(cards, {
     y: 0,
     transformStyle: "preserve-3d",
     transformPerspective: 800,
     transformOrigin: "center top"
   });
 
-  gsap.set('.cards__block:not(:first-child)', {
+  gsap.set(cards.slice(1), {
     y: (i) => 20 * (i + 1)
   });
 
@@ -403,30 +403,31 @@ if (window.innerWidth < 1000) {
     }
   });
 
-  tl.from(".cards__block:not(:first-child)", {
+  tl.from(cards.slice(1), {
     y: () => window.innerHeight,
     duration: time,
     stagger: {
       each: time,
-      from: "start" 
+      from: "start"
     }
-  }, 0); 
+  }, 0);
 
-  tl.to(".cards__block:not(:last-child)", {
+  tl.to(cards.slice(0, -1), {
     rotationX: -20,
-    scale: (i) => scaleMax(i),
+    scale: (i) => scaleMax(i + 1),
     stagger: {
       each: time,
       from: "start"
     }
-  }, time * 0.5);
+  }, time);
 
-  tl.to(".cards__block", {
+  tl.to(cards, {
     rotationX: 0,
     scale: 1,
+    y: 0,
     duration: 1,
     ease: "power2.out",
-  }, ">0.5"); 
+  }, "+=0.5");
 }
 
 
