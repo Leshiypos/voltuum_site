@@ -1,129 +1,125 @@
 // preloader
-document.body.style.overflow = 'hidden';
+document.body.style.overflow = "hidden";
 const loader = () => {
-    document.body.style.overflow = '';
-    const preloader = document.getElementById('preloader');
-    const fadeout = setInterval(() => {
-        const opacity = getComputedStyle(preloader).opacity;
-        opacity > 0 ? preloader.style.opacity = opacity - 0.1000 : (clearInterval(fadeout), preloader.remove());
-    }, 15);
-}
+  document.body.style.overflow = "";
+  const preloader = document.getElementById("preloader");
+  const fadeout = setInterval(() => {
+    const opacity = getComputedStyle(preloader).opacity;
+    opacity > 0
+      ? (preloader.style.opacity = opacity - 0.1)
+      : (clearInterval(fadeout), preloader.remove());
+  }, 15);
+};
 
-
-setTimeout(() => loader(), 2000);  
+setTimeout(() => loader(), 2000);
 
 if (window.innerWidth < 1000) {
-  
   const classesToExclude = [
-      // Добавляйте дополнительные классы, если нужно
+    // Добавляйте дополнительные классы, если нужно
   ];
 
   function getCurrentScale() {
-      const body = document.body;
-      const transform = window.getComputedStyle(body).transform;
-      if (transform && transform !== 'none') {
-          const matrix = transform.match(/matrix\(([^)]+)\)/);
-          if (matrix) {
-              const values = matrix[1].split(',');
-              return parseFloat(values[0]) || 1;
-          }
+    const body = document.body;
+    const transform = window.getComputedStyle(body).transform;
+    if (transform && transform !== "none") {
+      const matrix = transform.match(/matrix\(([^)]+)\)/);
+      if (matrix) {
+        const values = matrix[1].split(",");
+        return parseFloat(values[0]) || 1;
       }
-      return 1;
+    }
+    return 1;
   }
-  
+
   // Переменная для отслеживания текущего масштаба
   let currentScale = getCurrentScale();
-  
+
   // Инициализация Lenis с обновленными настройками
   const lenis = new Lenis({
-      duration: 1.8,                                            // Время анимации скролла
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Свойство easing для большей плавности
-      orientation: 'vertical',                                  // Вертикальный скролл (было direction)
-      smoothWheel: true,                                        // Включаем плавный скролл (было smooth)
-      wheelMultiplier: 1,                                       // Коэффициент скролла колесом мыши (было mouseMultiplier)
-      touchMultiplier: 1.5,                                     // Коэффициент скролла на сенсорных устройствах
-      infinite: false,                                          // Отключение бесконечного скролла
-      autoRaf: true,                                            // Автоматический RAF (новый параметр)
-      autoResize: true,                                         // Автоматическое изменение размеров
-      syncTouch: false,                                         // Синхронизация с touch событиями
-      
-      // Функция предотвращения скролла для определенных элементов
-      prevent: (node) => {
-          return classesToExclude.some(className => 
-              node.classList.contains(className) || 
-              node.closest(`.${className}`)
-          );
-      },
-      
-      // Виртуальный скролл для обработки автоскейла
-      virtualScroll: (e) => {
-          const newScale = getCurrentScale();
-          
-          // Если масштаб изменился, корректируем события скролла
-          if (newScale !== currentScale) {
-              currentScale = newScale;
-          }
-          
-          // Корректируем скорость скролла в зависимости от масштаба
-          if (currentScale !== 1) {
-              e.deltaY = e.deltaY / currentScale;
-              e.deltaX = e.deltaX / currentScale;
-          }
-          
-          return true; // Продолжаем обработку скролла
+    duration: 1.8, // Время анимации скролла
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Свойство easing для большей плавности
+    orientation: "vertical", // Вертикальный скролл (было direction)
+    smoothWheel: true, // Включаем плавный скролл (было smooth)
+    wheelMultiplier: 1, // Коэффициент скролла колесом мыши (было mouseMultiplier)
+    touchMultiplier: 1.5, // Коэффициент скролла на сенсорных устройствах
+    infinite: false, // Отключение бесконечного скролла
+    autoRaf: true, // Автоматический RAF (новый параметр)
+    autoResize: true, // Автоматическое изменение размеров
+    syncTouch: false, // Синхронизация с touch событиями
+
+    // Функция предотвращения скролла для определенных элементов
+    prevent: (node) => {
+      return classesToExclude.some(
+        (className) =>
+          node.classList.contains(className) || node.closest(`.${className}`)
+      );
+    },
+
+    // Виртуальный скролл для обработки автоскейла
+    virtualScroll: (e) => {
+      const newScale = getCurrentScale();
+
+      // Если масштаб изменился, корректируем события скролла
+      if (newScale !== currentScale) {
+        currentScale = newScale;
       }
+
+      // Корректируем скорость скролла в зависимости от масштаба
+      if (currentScale !== 1) {
+        e.deltaY = e.deltaY / currentScale;
+        e.deltaX = e.deltaX / currentScale;
+      }
+
+      return true; // Продолжаем обработку скролла
+    },
   });
-  
+
   // Обработка изменения размеров окна для пересчета масштаба
   let resizeTimeout;
-  window.addEventListener('resize', () => {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => {
-          currentScale = getCurrentScale();
-          lenis.resize(); // Обновляем размеры Lenis
-      }, 100);
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      currentScale = getCurrentScale();
+      lenis.resize(); // Обновляем размеры Lenis
+    }, 100);
   });
-  
+
   // Добавляем атрибуты для предотвращения скролла после загрузки страницы
-  window.addEventListener('load', () => {
-      classesToExclude.forEach((className) => {
-          document.querySelectorAll(`.${className}`).forEach((element) => {
-              element.setAttribute('data-lenis-prevent', '');
-          });
+  window.addEventListener("load", () => {
+    classesToExclude.forEach((className) => {
+      document.querySelectorAll(`.${className}`).forEach((element) => {
+        element.setAttribute("data-lenis-prevent", "");
       });
+    });
   });
-  
+
   // Слушаем события скролла (опционально, для отладки)
-  lenis.on('scroll', (e) => {
-      // console.log('Scroll event:', e);
+  lenis.on("scroll", (e) => {
+    // console.log('Scroll event:', e);
   });
 }
-
 
 // document.body.style.overflow = 'hidden';
 
 // const loadStartTime = Date.now();
-// const MIN_DISPLAY_TIME = 2000; 
+// const MIN_DISPLAY_TIME = 2000;
 
 // window.addEventListener('load', function() {
 //     const preloader = document.getElementById('preloader');
 //     const video = document.getElementById('#slider-video-1');
-    
-    
+
 //     if (!video) {
 //         waitMinimumTime(() => fadeOutPreloader(preloader));
 //         return;
 //     }
-    
+
 //     checkVideoReadyState();
 
-    
 //     video.addEventListener('loadedmetadata', checkVideoReadyState);
 //     video.addEventListener('loadeddata', checkVideoReadyState);
 //     video.addEventListener('canplaythrough', checkVideoReadyState);
 //     video.addEventListener('error', handleVideoError);
 
-    
 //     const videoLoadTimeout = setTimeout(() => {
 //         console.warn("Видео не загрузилось в течение 10 секунд");
 //         waitMinimumTime(() => fadeOutPreloader(preloader));
@@ -131,7 +127,7 @@ if (window.innerWidth < 1000) {
 //     }, 10000);
 
 //     function checkVideoReadyState() {
-//         if (video.readyState >= 3 && video.duration > 0) { 
+//         if (video.readyState >= 3 && video.duration > 0) {
 //             clearTimeout(videoLoadTimeout);
 //             waitMinimumTime(() => fadeOutPreloader(preloader));
 //             removeEventListeners();
@@ -153,34 +149,29 @@ if (window.innerWidth < 1000) {
 //     }
 // });
 
-
 // function waitMinimumTime(callback) {
 //     const elapsed = Date.now() - loadStartTime;
 //     const remainingTime = Math.max(0, MIN_DISPLAY_TIME - elapsed);
-    
+
 //     setTimeout(callback, remainingTime);
 // }
 
-
 // function fadeOutPreloader(preloader) {
 //     if (!preloader) return;
-    
+
 //     document.body.style.overflow = '';
 //     let opacity = 1;
-    
+
 //     const fadeInterval = setInterval(() => {
 //         opacity -= 0.05;
 //         preloader.style.opacity = opacity;
-        
+
 //         if (opacity <= 0) {
 //             clearInterval(fadeInterval);
 //             preloader.remove();
 //         }
 //     }, 30);
 // }
-
-
-
 
 //slider
 // Инициализация Swiper
@@ -365,115 +356,50 @@ if (window.innerWidth < 1000) {
 
 // initializeVideos();
 
-
-
 //cards
-
-if (window.innerWidth < 1000) {
-  const cards = gsap.utils.toArray('.cards__block');
-  const scaleMax = gsap.utils.mapRange(1, cards.length - 1, 0.8, 1);
-  const time = 3;
-
-  gsap.set(cards, {
-    y: 0,
-    transformStyle: "preserve-3d",
-    transformPerspective: 800,
-    transformOrigin: "center top"
-  });
-
-  gsap.set(cards.slice(1), {
-    y: (i) => 20 * (i + 1)
-  });
-
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".cards-inner",
-      start: "center center",
-      end: "+=300%",
-      scrub: 0.8,
-      pin: true,
-      markers: true,
-      pinSpacing: true,
-      anticipatePin: 1,
-      onRefresh: self => {
-        if (self.progress === 1) {
-          gsap.set(cards, { clearProps: "all" });
-        }
-      }
-    }
-  });
-
-  tl.from(cards.slice(1), {
-    y: () => window.innerHeight,
-    duration: time,
-    stagger: {
-      each: time,
-      from: "start"
-    }
-  }, 0);
-
-  tl.to(cards.slice(0, -1), {
-    rotationX: -20,
-    scale: (i) => scaleMax(i + 1),
-    stagger: {
-      each: time,
-      from: "start"
-    }
-  }, time);
-
-  tl.to(cards, {
-    rotationX: 0,
-    scale: 1,
-    y: 0,
-    duration: 1,
-    ease: "power2.out",
-  }, "+=0.5");
-}
-
 
 //Fade-in
 
 gsap.utils.toArray(".fade-in-blur").forEach((element) => {
-    gsap.from(element, {
-        opacity: 0,
-        y: -10,
-        duration: 1,
-        scrollTrigger: {
-            trigger: element,
-            start: "top 90%",
-            toggleActions: "play none none none", 
-        },
-    });
-    
-    // Отдельная анимация для размытия
-    gsap.from(element, {
-        filter: "blur(10px)",
-        duration: 0.8,
-        scrollTrigger: {
-            trigger: element,
-            start: "top 90%",
-            toggleActions: "play none none none", 
-        },
-    });
+  gsap.from(element, {
+    opacity: 0,
+    y: -10,
+    duration: 1,
+    scrollTrigger: {
+      trigger: element,
+      start: "top 90%",
+      toggleActions: "play none none none",
+    },
+  });
+
+  // Отдельная анимация для размытия
+  gsap.from(element, {
+    filter: "blur(10px)",
+    duration: 0.8,
+    scrollTrigger: {
+      trigger: element,
+      start: "top 90%",
+      toggleActions: "play none none none",
+    },
+  });
 });
 
 gsap.utils.toArray(".fade-in").forEach((element) => {
-    gsap.from(element, {
-        opacity: 0,
-        y: 40,
-        duration: 1,
-        scrollTrigger: {
-        trigger: element,
-        start: "top 90%",
-        toggleActions: "play none none none", 
-        },
-    });
+  gsap.from(element, {
+    opacity: 0,
+    y: 40,
+    duration: 1,
+    scrollTrigger: {
+      trigger: element,
+      start: "top 90%",
+      toggleActions: "play none none none",
+    },
+  });
 });
 
+// popup
 
- // popup
-
-const buttonContact = document.querySelector('.header__button-contact');
+const buttonContact = document.querySelector(".header__button-contact");
 
 const popupOverlay = document.getElementById("popup-overlay");
 const popup = document.getElementById("popup");
@@ -488,47 +414,46 @@ function closePopup() {
   popup.style.display = "none";
 }
 
-
-
-
 //video
 
 const isMobile = window.innerWidth < 1000;
 
-
 const sliderVideo1 = document.getElementById("slider-video-1");
 if (sliderVideo1) {
-    sliderVideo1.src = isMobile ? "./assets/head1-mobile.mp4" : "./assets/head1.mp4";
+  sliderVideo1.src = isMobile
+    ? "./assets/head1-mobile.mp4"
+    : "./assets/head1.mp4";
 }
-
 
 const sliderVideo2 = document.getElementById("slider-video-2");
 if (sliderVideo2) {
-    sliderVideo2.src = isMobile ? "./assets/head2-mobile.mp4" : "./assets/head2.mp4";
+  sliderVideo2.src = isMobile
+    ? "./assets/head2-mobile.mp4"
+    : "./assets/head2.mp4";
 }
-
 
 const sliderVideo3 = document.getElementById("slider-video-3");
 if (sliderVideo3) {
-    sliderVideo3.src = isMobile ? "./assets/head3-mobile.mp4" : "./assets/head3.mp4";
+  sliderVideo3.src = isMobile
+    ? "./assets/head3-mobile.mp4"
+    : "./assets/head3.mp4";
 }
 
 const solutionVideo = document.querySelector(".solution-video-item");
 if (solutionVideo) {
-    solutionVideo.src = isMobile ? "./assets/benefits-mobile.mp4" : "./assets/benefits.mp4";
-
+  solutionVideo.src = isMobile
+    ? "./assets/benefits-mobile.mp4"
+    : "./assets/benefits.mp4";
 }
 
-
-
 //slider
-const partnersSlider = new Swiper('#partners-slider', {
-  direction: 'horizontal',
+const partnersSlider = new Swiper("#partners-slider", {
+  direction: "horizontal",
   // loop: true,
 
   navigation: {
-    nextEl: '.partners-button-next',
-    prevEl: '.partners-button-prev',
+    nextEl: ".partners-button-next",
+    prevEl: ".partners-button-prev",
   },
 
   slidesPerView: 1.3,
@@ -544,32 +469,27 @@ const partnersSlider = new Swiper('#partners-slider', {
   allowTouchMove: true,
 });
 
-
-
 // burger-menu
 
-const burgerBtn = document.querySelector('.burger-btn');
-const menu = document.querySelector('.menu');
-const closeBtn = document.querySelector('.close-btn');
+const burgerBtn = document.querySelector(".burger-btn");
+const menu = document.querySelector(".menu");
+const closeBtn = document.querySelector(".close-btn");
 const body = document.body;
-const menuLinks = document.querySelectorAll('.burger__list-link a');
+const menuLinks = document.querySelectorAll(".burger__list-link a");
 
-burgerBtn.addEventListener('click', () => {
-    menu.classList.add('active');
-    body.classList.add('menu-open'); 
+burgerBtn.addEventListener("click", () => {
+  menu.classList.add("active");
+  body.classList.add("menu-open");
 });
 
-closeBtn.addEventListener('click', () => {
-    menu.classList.remove('active');
-    body.classList.remove('menu-open'); 
+closeBtn.addEventListener("click", () => {
+  menu.classList.remove("active");
+  body.classList.remove("menu-open");
 });
 
-menuLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        menu.classList.remove('active');
-        body.classList.remove('menu-open'); 
-    });
+menuLinks.forEach((link) => {
+  link.addEventListener("click", () => {
+    menu.classList.remove("active");
+    body.classList.remove("menu-open");
+  });
 });
-
-
-        
